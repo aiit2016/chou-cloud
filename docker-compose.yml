@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  api:
+    image: buckarooch/ruby-sinatra
+    container_name: api
+    environment:
+      MAIN_APP_FILE: web.rb
+    volumes:
+      - ./chou-cloud-api:/myapp
+    ports:
+      - 9001:8080
+    depends_on:
+      - datacenter
+
+  datacenter:
+    image: buckarooch/spring-boot
+    container_name: datacenter
+    environment:
+      MAIN_APP_FILE: chou-cloud-datacenter-0.0.1-SNAPSHOT.jar
+    volumes:
+      - ./chou-cloud-datacenter/build/libs:/myapp
+      - /tmp
+    ports:
+      - 9002:8080
+
