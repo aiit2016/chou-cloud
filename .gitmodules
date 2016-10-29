@@ -1,0 +1,6 @@
+[submodule "chou-cloud-api"]
+	path = chou-cloud-api
+	url = https://github.com/aiit2016/chou-cloud-api.git
+[submodule "chou-cloud-datacenter"]
+	path = chou-cloud-datacenter
+	url = https://github.com/aiit2016/chou-cloud-datacenter.git
