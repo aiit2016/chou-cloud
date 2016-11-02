@@ -23,4 +23,23 @@ services:
       - /tmp
     ports:
       - 9002:8080
+    depends_on:
+      - ccdb
+
+  ccdb:
+    image: postgres:9.6
+    container_name: ccdb
+    environment:
+      PGDATA: datacenter
+      POSTGRES_DB: datacenter
+      POSTGRES_USER: ccuser
+      POSTGRES_PASSWORD: ccuser
+    volumes:
+      - data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  data:
+    external: false
 
